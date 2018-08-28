@@ -96,7 +96,7 @@ RUN(() => {
 	
 	let code;
 	
-	aceEditor.getSession().on('change', () => {
+	let save = () => {
 		
 		if (key !== undefined) {
 			
@@ -144,5 +144,8 @@ RUN(() => {
 				}, 500);
 			}
 		}
-	});
+	};
+	
+	aceEditor.getSession().on('change', save);
+	aceEditor.on('paste', save);
 });
